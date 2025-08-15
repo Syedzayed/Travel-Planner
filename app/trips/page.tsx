@@ -1,5 +1,6 @@
 import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 
 export default async function TripsPage() {
@@ -16,10 +17,18 @@ export default async function TripsPage() {
 
     return (
         <div className="space-y-6 container mx-auto px-4 py-8">
-                <h1>Dashboard</h1>
+            <div className="flex justify-between items-center">
+                <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
                 <Link href="/trips/new">
                 <Button>New Trip</Button>
                 </Link>
+                </div>
+
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Welcome Back , {session.user?.name}</CardTitle>
+                    </CardHeader>
+                </Card>
         </div>
     );
 }
