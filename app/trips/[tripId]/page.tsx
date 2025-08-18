@@ -1,6 +1,5 @@
 import { auth } from "@/auth";
 import TripDetailClient from "@/components/trip-detail";
-
 import { prisma } from "@/lib/prisma";
 
 export default async function TripDetail({
@@ -18,7 +17,7 @@ export default async function TripDetail({
 
   const trip = await prisma.trip.findFirst({
     where: { id: tripId, userId: session.user?.id },
-    
+    include: { locations: true },
   });
 
   console.log(trip);
